@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eee;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .container {
+            background: white;
+            width: 320px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        ul {
+            margin-top: 15px;
+            padding-left: 0;
+        }
+
+        li {
+            list-style: none;
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        li.completed .task-text {
+            text-decoration: line-through;
+            color: #555;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        .check-btn {
+            background: green;
+            color: white;
+        }
+
+        .remove-btn {
+            background: red;
+            color: white;
+        }
+
+        .add-btn {
+            width: 100%;
+            margin-top: 10px;
+            background: black;
+            color: white;
+        }
+
+        .task-text {
+            flex-grow: 1;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <input id="taskInput" type="text" placeholder="Tapşırıq daxil et...">
+    <button class="add-btn" onclick="addTask()">Əlavə et</button>
+
+    <ul id="taskList"></ul>
+</div>
+
+<script>
+    function addTask() {
+        const input = document.getElementById("taskInput");
+        const text = input.value.trim();
+        if (text === "") return;
+
+        const li = document.createElement("li");
+
+        // TEXT
+        const span = document.createElement("span");
+        span.className = "task-text";
+        span.textContent = text;
+
+        // CHECK BUTTON
+        const checkBtn = document.createElement("button");
+        checkBtn.textContent = "✓";
+        checkBtn.className = "check-btn";
+        checkBtn.onclick = () => {
+            li.classList.toggle("completed");
+        };
+
+        // REMOVE BUTTON
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Sil";
+        removeBtn.className = "remove-btn";
+        removeBtn.onclick = () => {
+            li.remove();
+        };
+
+        // BUTTON GROUP (sağ tərəf)
+        const btnGroup = document.createElement("div");
+        btnGroup.className = "btn-group";
+        btnGroup.appendChild(checkBtn);
+        btnGroup.appendChild(removeBtn);
+
+        li.appendChild(span);
+        li.appendChild(btnGroup);
+
+        document.getElementById("taskList").appendChild(li);
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>

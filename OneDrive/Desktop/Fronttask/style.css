@@ -1,0 +1,43 @@
+body {
+    background: #222;
+      color: #fff;
+      font-family: "Montserrat", Arial;
+    }
+
+    .hero {
+      height: 100vh;
+      background-image: url('https://img.freepik.com/free-photo/black-camera-lens-brown-wooden-table_417767-6.jpg?semt=ais_hybrid&w=740&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.534);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 70px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    @media(max-width: 768px) {
+      .hero-title {
+        font-size: 38px;
+      }
+    }

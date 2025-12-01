@@ -1,0 +1,18 @@
+button {
+    padding: 8px 15px;
+    margin: 5px;
+    background-color: lightblue;
+    color: rgb(245, 242, 242);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 32px;
+}
+
+button:hover {
+    background-color: deepskyblue;
+}
+
+button.clicked {
+    background-color: rgb(66, 13, 213);
+}
